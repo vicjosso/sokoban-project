@@ -69,5 +69,102 @@ public class Board {
      */
     public void displayBoard(){
         
+        //affichage des chiffres des colonnes
+        System.out.print("  ");
+        for(int i = 1 ; i < this.colNb + 1 ; i++){ System.out.print(" " + i); }
+        
+        //affichag de toutes les cases
+        System.out.println("");
+        for(int i = 1 ; i < this.rowNb + 1 ; i++) //à modifier
+        {
+            if(i<10){System.out.print(i + " ");}
+            else{System.out.print(i);}
+            System.out.print(" ");
+                        
+            for(int j = 1 ; j < this.colNb + 1 ; j++)
+            {
+                if(j<10) {System.out.print(displayCase(i-1, j-1)+" ");}
+                else {System.out.print(" "+displayCase(i-1, j-1)+" ");}
+            }
+            System.out.println("");
+        }
+        
+    }
+    
+    /**
+     * Affiche une case
+     * @param row, la ligne
+     * @param col, la colonne
+     * @return, ce qui doit être affiché
+     */
+    private char displayCase(int row, int col){
+        
+        switch(this.getCase(row+1, col+1)){
+            case WALL :
+                return '#';
+            case PLAYER :
+                return 'P';
+            case BOX :
+                return 'C';
+            case DESTINATION :
+                return 'X';
+            default :
+                return '.';
+        }  
+    }
+    
+    /**
+     * Dessine une ligne verticale d'une certaine longueur
+     * @param board, le plateau
+     * @param start, le point de départ
+     * @param length, la longueur de la ligne
+     */
+    public void drawVerticalWall(Case start, int length){
+        
+        for(int i = start.getRow(); i < start.getRow()+length; i++){
+            if(i<=this.getNbRows()){this.setCase(i, start.getCol(), Content.WALL);}
+            else{break;}
+        }
+    }
+    
+    /**
+     * Dessine une ligne horizontale d'une certaine longueur
+     * @param board, la plateau
+     * @param start, le point de départ
+     * @param length, la longueur de la ligne
+     */
+    public void drawHorizontalWall(Case start, int length){
+        
+        for(int i = start.getCol(); i < start.getCol()+length; i++){
+            if(i<=this.getNbCols()){this.setCase(start.getRow(), i, Content.WALL);}
+            else{break;}
+        }
+    }
+    
+    /**
+     * Rajoute une boîte
+     * @param row, la ligne
+     * @param col, la oclonne
+     */
+    public void addBox(int row, int col){
+        if(row<this.rowNb+1 || col<this.colNb+1){this.setCase(row, col, Content.BOX);} else {/*rajouter exception*/}
+    } 
+    
+    /**
+     * Rajoute une cible
+     * @param row, la ligne
+     * @param col, la colonne
+     */
+    public void addTarget(int row, int col){
+        if(row<this.rowNb+1 || col<this.colNb+1){this.setCase(row, col, Content.DESTINATION);} else {/*rajouter exception*/}
+    }
+    
+    /**
+     * Rajoute un joueur
+     * @param row, la ligne
+     * @param col, la colonne 
+     */
+    public void addPlayer(int row, int col){
+        if(row<this.rowNb+1 || col<this.colNb+1){this.setCase(row, col,  Content.PLAYER);} else {/*rajouter exception*/}
     }
 }
