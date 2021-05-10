@@ -11,7 +11,7 @@ public class ClassTests {
     @Test
     public void testBoard(){
         //board
-        Board board = new Board(9, 9);
+        Board board = new Board(20, 20);
         Case start = new Case(2, 5);
         
         board.drawVerticalWall(start, 10);

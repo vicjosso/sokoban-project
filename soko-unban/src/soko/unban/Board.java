@@ -69,22 +69,13 @@ public class Board {
      */
     public void displayBoard(){
         
-        //affichage des chiffres des colonnes
-        System.out.print("  ");
-        for(int i = 1 ; i < this.colNb + 1 ; i++){ System.out.print(" " + i); }
-        
         //affichag de toutes les cases
         System.out.println("");
         for(int i = 1 ; i < this.rowNb + 1 ; i++) //à modifier
-        {
-            if(i<10){System.out.print(i + " ");}
-            else{System.out.print(i);}
-            System.out.print(" ");
-                        
+        {          
             for(int j = 1 ; j < this.colNb + 1 ; j++)
             {
-                if(j<10) {System.out.print(displayCase(i-1, j-1)+" ");}
-                else {System.out.print(" "+displayCase(i-1, j-1)+" ");}
+                System.out.print(displayCase(i-1, j-1)+" ");
             }
             System.out.println("");
         }

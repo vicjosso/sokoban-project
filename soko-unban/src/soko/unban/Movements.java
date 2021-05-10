@@ -12,22 +12,108 @@ public class Movements {
      * @param board, plateau de jeu
      * @return true si le placemetnt est valide sinon false
      */
-    public boolean movementValidation(char dep, Board board){
+    public boolean movementValidation(String dep, Board board){
         
-        switch (dep){
-            case 'U':
-                break;
-            case 'D':
-                break;
-            case 'L':
-                break;
-            case 'R':
-                break;
-            default:
-                System.out.println("Commande " + dep + "inconnue");
-                return false;
+        boolean playerFound = false;
+        Case player = new Case(0,0);
+        
+        for(int i = 1; i < board.getNbRows(); i++){
+            for(int j = 1; j < board.getNbCols(); j++){
+                if(board.getCase(i, j) == Content.PLAYER){ player = new Case(i, j); playerFound = true;}
+            }
         }
         
-        return false;
+        if(!playerFound){System.out.println("Aucun joueur sur le plateau"); return false;}
+        
+        switch (dep){
+            case "U":
+                if(player.getRow()-1 > 0){
+                    if(board.getCase(player.getRow()-1, player.getCol()) == Content.EMPTY) { return true; }
+                    else if(player.getRow()-2 >= 0 && board.getCase(player.getRow()-1, player.getCol()) == Content.BOX){
+                        if(board.getCase(player.getRow()-2, player.getCol()) == Content.EMPTY){ return true;}
+                    } else {return false;}
+                }
+                else {return false;}
+            case "D":
+                if(player.getRow()+1 <= board.getNbRows()){
+                    if(board.getCase(player.getRow()+1, player.getCol()) == Content.EMPTY) { return true; }
+                    else if(player.getRow()+2 <= board.getNbRows() && board.getCase(player.getRow()+1, player.getCol()) == Content.BOX){
+                        if(board.getCase(player.getRow()+2, player.getCol()) == Content.EMPTY){ return true;}
+                    } else {return false;}
+                }
+                else {return false;}
+            case "L":
+                if(player.getCol()-1 > 0){
+                    if(board.getCase(player.getRow(), player.getCol()-1) == Content.EMPTY) { return true; }
+                    else if(player.getCol()-2 >= 0 && board.getCase(player.getRow(), player.getCol()-1) == Content.BOX){
+                        if(board.getCase(player.getRow(), player.getCol()-2) == Content.EMPTY){ return true;}
+                    }
+                } else {return false;}
+            case "R":
+                if(player.getCol()+1 <= board.getNbCols()){
+                    if(board.getCase(player.getRow(),player.getCol()+1) == Content.EMPTY) { return true; }
+                    else if(player.getCol()+2 <= board.getNbCols() && board.getCase(player.getRow(), player.getCol()+1) == Content.BOX){
+                        if(board.getCase(player.getRow(), player.getCol()+2) == Content.EMPTY){ return true;}
+                    }
+                } else {return false;}
+            default:
+                System.out.println("Commande " + dep + " inconnue");
+                return false;
+        }
     }
+    
+    /**
+     * Déplace le joueur en fonction d'une direction donnée
+     * @param move, direction du déplacement
+     * @param board, plateau sur lequel on joue
+     * @return le nouveau board 
+     */
+    public Board movePlayer(String move, Board board){
+        
+        Case player = new Case(0,0);
+        
+        for(int i = 1; i < board.getNbRows(); i++){
+            for(int j = 1; j < board.getNbCols(); j++){
+                if(board.getCase(i, j) == Content.PLAYER){ player = new Case(i, j);}
+            }
+        }
+        
+        switch (move){
+            case "U":
+                if(board.getCase(player.getRow()-1, player.getCol()) == Content.BOX){ 
+                    board.setCase(player.getRow()-2, player.getCol(), Content.BOX);
+                    board.setCase(player.getRow()-1, player.getCol(), Content.EMPTY);
+                }
+                board.setCase(player.getRow()-1, player.getCol(), Content.PLAYER);
+                    board.setCase(player.getRow(), player.getCol(), Content.EMPTY);
+                break;
+            case "D":
+                if(board.getCase(player.getRow()+1, player.getCol()) == Content.BOX){ 
+                    board.setCase(player.getRow()+2, player.getCol(), Content.BOX);
+                    board.setCase(player.getRow()+1, player.getCol(), Content.EMPTY);
+                }
+                board.setCase(player.getRow()+1, player.getCol(), Content.PLAYER);
+                    board.setCase(player.getRow(), player.getCol(), Content.EMPTY);
+                break;
+            case "L":
+                if(board.getCase(player.getRow(), player.getCol()-1) == Content.BOX){ 
+                    board.setCase(player.getRow(), player.getCol()-2, Content.BOX);
+                    board.setCase(player.getRow(), player.getCol()-1, Content.EMPTY);
+                }
+                board.setCase(player.getRow(), player.getCol()-1, Content.PLAYER);
+                    board.setCase(player.getRow(), player.getCol(), Content.EMPTY);
+                break;
+            case "R":
+                if(board.getCase(player.getRow(), player.getCol()+1) == Content.BOX){ 
+                    board.setCase(player.getRow(), player.getCol()+2, Content.BOX);
+                    board.setCase(player.getRow(), player.getCol()+1, Content.EMPTY);
+                }
+                board.setCase(player.getRow(), player.getCol()+1, Content.PLAYER);
+                    board.setCase(player.getRow(), player.getCol(), Content.EMPTY);
+                break;
+        }
+        
+        return board;
+    }
+    
 }
