@@ -115,7 +115,6 @@ public class Board {
     
     /**
      * Dessine une ligne verticale d'une certaine longueur
-     * @param board, le plateau
      * @param start, le point de départ
      * @param length, la longueur de la ligne
      */
@@ -129,7 +128,6 @@ public class Board {
     
     /**
      * Dessine une ligne horizontale d'une certaine longueur
-     * @param board, la plateau
      * @param start, le point de départ
      * @param length, la longueur de la ligne
      */

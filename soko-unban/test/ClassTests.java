@@ -17,7 +17,7 @@ public class ClassTests {
         board.drawVerticalWall(start, 10);
         board.drawHorizontalWall(start, 4);
         board.addPlayer(1, 1);
-        board.addBox(10, 9);
+        board.addBox(9, 9);
         board.addTarget(3, 3);
         
         board.displayBoard();
