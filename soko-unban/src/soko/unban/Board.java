@@ -97,7 +97,7 @@ public class Board {
                 return 'P';
             case BOX :
                 return 'C';
-            case DESTINATION :
+            case TARGET :
                 return 'X';
             default :
                 return '.';
@@ -145,7 +145,7 @@ public class Board {
      * @param col, la colonne
      */
     public void addTarget(int row, int col){
-        if(row<this.rowNb+1 || col<this.colNb+1){this.setCase(row, col, Content.DESTINATION);} else {/*rajouter exception*/}
+        if(row<this.rowNb+1 || col<this.colNb+1){this.setCase(row, col, Content.TARGET);} else {/*rajouter exception*/}
     }
     
     /**
