@@ -2,6 +2,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 import soko.unban.Board;
 import soko.unban.Case;
+import soko.unban.Movements;
 import soko.unban.VictoryCheck;
 
 /**
@@ -40,5 +41,22 @@ public class ClassTests {
         
         assertEquals(true, VictoryCheck.check(board));
         
+    }
+    
+    @Test
+    public void testMovements(){
+        //test boxValidation
+        Board board = new Board (5, 5);
+        board.addBox(2, 1);
+        board.addBox(3, 1);
+        board.addBox(4, 1);
+        board.addBox(2, 2);
+        
+        board.displayBoard();
+        
+        Movements move = new Movements();
+        
+        assertEquals(true, move.boxValidation(board, new Case(5, 1), "U", 1));
+        assertEquals(false, move.boxValidation(board, new Case(2, 3), "L", 1)); 
     }
 }

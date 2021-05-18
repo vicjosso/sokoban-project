@@ -140,7 +140,7 @@ public class Board {
      * @param col, la oclonne
      */
     public void addBox(int row, int col){
-        if(row<this.rowNb+1 || col<this.colNb+1){this.setCase(row, col, Content.BOX);} else {/*rajouter exception*/}
+        if(row<this.rowNb+1 && col<this.colNb+1 && row > 0 && col > 0){this.setCase(row, col, Content.BOX);} else {/*rajouter exception*/}
     } 
     
     /**
@@ -149,7 +149,7 @@ public class Board {
      * @param col, la colonne
      */
     public void addTarget(int row, int col){
-        if(row<this.rowNb+1 || col<this.colNb+1){this.setCase(row, col, Content.TARGET); this.targets.add(new Case(row, col));} else {/*rajouter exception*/}
+        if(row<this.rowNb+1 && col<this.colNb+1 && row > 0 && col > 0){this.setCase(row, col, Content.TARGET); this.targets.add(new Case(row, col));} else {/*rajouter exception*/}
     }
     
     /**
@@ -158,6 +158,6 @@ public class Board {
      * @param col, la colonne 
      */
     public void addPlayer(int row, int col){
-        if(row<this.rowNb+1 || col<this.colNb+1){this.setCase(row, col,  Content.PLAYER);} else {/*rajouter exception*/}
+        if(row<this.rowNb+1 && col<this.colNb+1 && row > 0 && col > 0){this.setCase(row, col,  Content.PLAYER);} else {/*rajouter exception*/}
     }
 }
