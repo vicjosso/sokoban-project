@@ -34,11 +34,11 @@ public class ClassTests {
         Case[] target = new Case[1];
         target[0] = new Case(1, 1);
         
-        assertEquals(false, VictoryCheck.check(target, board));
+        assertEquals(false, VictoryCheck.check(board));
         
         board.addBox(1, 1);
         
-        assertEquals(true, VictoryCheck.check(target, board));
+        assertEquals(true, VictoryCheck.check(board));
         
     }
 }

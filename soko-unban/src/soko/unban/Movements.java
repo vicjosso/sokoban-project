@@ -25,36 +25,48 @@ public class Movements {
         
         if(!playerFound){System.out.println("Aucun joueur sur le plateau"); return false;}
         
-        switch (dir){
+        switch (dir){ //gérer les mutliboîtes
             case "U":
                 if(player.getRow()-1 > 0){
-                    if(board.getCase(player.getRow()-1, player.getCol()) == Content.EMPTY) { return true; }
+                    if(board.getCase(player.getRow()-1, player.getCol()) == Content.EMPTY 
+                            || board.getCase(player.getRow()-1, player.getCol()) == Content.TARGET) { return true; }
                     else if(player.getRow()-2 >= 0 && board.getCase(player.getRow()-1, player.getCol()) == Content.BOX){
-                        if(board.getCase(player.getRow()-2, player.getCol()) == Content.EMPTY){ return true;}
+                        if(board.getCase(player.getRow()-2, player.getCol()) == Content.EMPTY 
+                                || board.getCase(player.getRow()-2, player.getCol()) == Content.TARGET){ return true;}
+                        else {return false;} 
                     } else {return false;}
                 }
                 else {return false;}
             case "D":
                 if(player.getRow()+1 <= board.getNbRows()){
-                    if(board.getCase(player.getRow()+1, player.getCol()) == Content.EMPTY) { return true; }
+                    if(board.getCase(player.getRow()+1, player.getCol()) == Content.EMPTY
+                            || board.getCase(player.getRow()+1, player.getCol()) == Content.TARGET) { return true; }
                     else if(player.getRow()+2 <= board.getNbRows() && board.getCase(player.getRow()+1, player.getCol()) == Content.BOX){
-                        if(board.getCase(player.getRow()+2, player.getCol()) == Content.EMPTY){ return true;}
+                        if(board.getCase(player.getRow()+2, player.getCol()) == Content.EMPTY
+                                || board.getCase(player.getRow()+2, player.getCol()) == Content.TARGET){ return true;}
+                        else {return false;}
                     } else {return false;}
                 }
                 else {return false;}
-            case "L": //passage a travers le mur
+            case "L": 
                 if(player.getCol()-1 > 0){
-                    if(board.getCase(player.getRow(), player.getCol()-1) == Content.EMPTY) { return true; }
+                    if(board.getCase(player.getRow(), player.getCol()-1) == Content.EMPTY
+                            || board.getCase(player.getRow(), player.getCol()-1) == Content.TARGET) { return true; }
                     else if(player.getCol()-2 >= 0 && board.getCase(player.getRow(), player.getCol()-1) == Content.BOX){
-                        if(board.getCase(player.getRow(), player.getCol()-2) == Content.EMPTY){ return true;}
-                    }
+                        if(board.getCase(player.getRow(), player.getCol()-2) == Content.EMPTY
+                                || board.getCase(player.getRow(), player.getCol()-2) == Content.TARGET){ return true; }
+                        else {return false;}
+                    } else {return false;} 
                 } else {return false;}
-            case "R": //commance inconnue lors de la collision avec un mur
+            case "R": 
                 if(player.getCol()+1 <= board.getNbCols()){
-                    if(board.getCase(player.getRow(),player.getCol()+1) == Content.EMPTY) { return true; }
+                    if(board.getCase(player.getRow(),player.getCol()+1) == Content.EMPTY
+                            || board.getCase(player.getRow(),player.getCol()+1) == Content.TARGET) { return true; }
                     else if(player.getCol()+2 <= board.getNbCols() && board.getCase(player.getRow(), player.getCol()+1) == Content.BOX){
-                        if(board.getCase(player.getRow(), player.getCol()+2) == Content.EMPTY){ return true;}
-                    }
+                        if(board.getCase(player.getRow(), player.getCol()+2) == Content.EMPTY
+                                || board.getCase(player.getRow(), player.getCol()+2) == Content.EMPTY){ return true; }
+                        else {return false;} 
+                    } else {return false;} 
                 } else {return false;}
             default:
                 System.out.println("Commande " + dir + " inconnue");

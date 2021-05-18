@@ -8,14 +8,16 @@ public class VictoryCheck {
     
     /**
      * Vérifie si toutes les caisses sont bien sur leurs cibles
-     * @param obj, tableau de case des cibles
      * @param board, tableau sur lequel on joue
      * @return vrai si toutes les cibles son recouverte de caisses
      */
-    public static boolean check(Case[] obj, Board board){
+    public static boolean check(Board board){
         
-        for (Case o : obj) {
-            if (board.getCase(o.getRow(), o.getCol()) == Content.TARGET || board.getCase(o.getRow(), o.getCol()) == Content.PLAYER) {
+        for (Case o : board.targets) {
+            if (board.getCase(o.getRow(), o.getCol()) == Content.TARGET 
+                    || board.getCase(o.getRow(), o.getCol()) == Content.PLAYER 
+                    || board.getCase(o.getRow(), o.getCol()) == Content.EMPTY) {
+                if(board.getCase(o.getRow(), o.getCol()) == Content.EMPTY){ board.setCase(o.getRow(), o.getCol(), Content.TARGET);}
                 return false;
             }
         }
