@@ -6,4 +6,5 @@ package soko.unban;
  */
 public class BoardBuilderFromFile implements BoardBuilder {
     
+    //voir infos dans découpage entrée player
 }

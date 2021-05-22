@@ -35,13 +35,15 @@ public class Game {
         while(!win){
             
             System.out.println("Veuillez annoncez votre déplacement :");
-            String move = in.nextLine().trim();
+            String move = in.next();
+            String[] moves = move.split("|");
             
-            if(movements.movementValidation(move, board)){
-                board = movements.movePlayer(move, board);
+            for(int i = 0; i< moves.length; i++){
+                if(movements.movementValidation(moves[i], board)){
+                    board = movements.movePlayer(moves[i], board);
+                }
             }
             
-            //crash lorsque la caisse arrive sur la cible
             win = VictoryCheck.check(board);
             
             board.displayBoard();
