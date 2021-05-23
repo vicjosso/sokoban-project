@@ -6,4 +6,6 @@ package soko.unban;
  */
 public interface BoardBuilder {
     
+    
+    public void reader();
 }

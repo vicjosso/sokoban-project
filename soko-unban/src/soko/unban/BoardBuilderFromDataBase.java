@@ -6,4 +6,8 @@ package soko.unban;
  */
 public class BoardBuilderFromDataBase implements BoardBuilder {
     
+    @Override
+    public void reader(){
+        //commande sql nécessaire ou au moins découpage
+    }
 }

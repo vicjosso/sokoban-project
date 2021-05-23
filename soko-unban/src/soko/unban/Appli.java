@@ -61,4 +61,45 @@ public class Appli {
         System.out.println("");
     }
     
+    /**
+     * Méthode de gestion de l'interface amdinistrateur
+     * @param db base de données utilisé
+     */
+    public static void admin(DataBase db){
+    
+        boolean loop = true;
+        
+        while(loop){
+            System.out.println("0 - Quitter");
+            System.out.println("1 - Init base de données");
+            System.out.println("2 - Montrer base de données");
+            System.out.println("3 - Créer une nouvelles MAP");
+            System.out.println("4 - Efface une MAP");
+
+            Scanner scanner = new Scanner(System.in);
+
+            switch(scanner.nextLine()){
+                case "0":
+                    loop = false;
+                    break;
+                case "1":
+                    db.createTable();
+                    break;
+                case "2":
+                    db.show();
+                    break;
+                case "3":
+                    System.out.println("Indiquez le nom de la futur map :");
+                    db.addMap(scanner.nextLine(), new String[]{"########",
+                                                                "#......#",
+                                                                "#X..B.P#",
+                                                                "########"}); //connecter lentrée a la sorti lecture fichier
+                    break;
+                case "4":
+                    db.deleteMap(); 
+                    break;
+            }
+        }
+    }
+    
 }
