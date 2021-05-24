@@ -135,6 +135,23 @@ public class DataBase {
     }
     
     /**
+     * Affiche l'ensemble des noms des maps disponible
+     */
+    public void showNames(){
+        try{
+            String sql = "select name from MAPS;";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            ResultSet result = stm.executeQuery();
+            while(result.next()){
+                String name = result.getString("name");
+                System.out.println("-> " + name);
+            }
+        } catch(SQLException e){
+            System.out.println(e);
+        }
+    }
+    
+    /**
      * Permet d'effacer un plateau de jeu spécifique en fonction de son ID
      */
     public void deleteMap(){

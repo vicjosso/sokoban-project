@@ -13,7 +13,7 @@ public class Appli {
     /**
      * Affiche le menu de jeu et permet de lancer une partie
      */
-    static void menu(){
+    static void menu(DataBase db){
         
         boolean loop = true;
         
@@ -28,8 +28,8 @@ public class Appli {
                     loop = false;
                     break;
                 case "1":
-                    System.out.println("Lancement du premier niveau");
-                    Game.level();
+                    db.showNames();
+                    Game.level(db);
                     break;
                 case "2":
                     Appli.rules();
@@ -90,7 +90,7 @@ public class Appli {
                                                                 "#X..B.P#",
                                                                 "########"}); //connecter lentrée a la sorti lecture fichier
                     */
-                    builderFile.reader(scanner.nextLine(), db);
+                    builderFile.reader(scanner.nextLine(), db); //non fonctionnel
                 break;
                 case "4":
                     db.deleteMap(); 
