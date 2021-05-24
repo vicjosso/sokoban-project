@@ -19,10 +19,8 @@ public class Appli {
         
         while(loop){
             System.out.println("0) Quitter");
-            System.out.println("1) Lancer le premier niveau");
-            System.out.println("2) Lancer le deuxième niveau");
-            System.out.println("3) Lancer le troisième niveau");
-            System.out.println("4) Afficher les règles");
+            System.out.println("1) Lancer un niveau");
+            System.out.println("2) Afficher les règles");
             String commande = in.nextLine().trim();
             switch (commande) {
                 case "0":
@@ -31,15 +29,9 @@ public class Appli {
                     break;
                 case "1":
                     System.out.println("Lancement du premier niveau");
-                    Game.levelOne();
+                    Game.level();
                     break;
                 case "2":
-                    System.out.println("-> Fonctionnalité non-implémanté");
-                    break;
-                case "3":
-                    System.out.println("-> Fonctionnalité non-implémanté");
-                    break;
-                case "4":
                     Appli.rules();
                 case "69":
                     System.out.println("UWU ceci est une fonctionnalité secrète UWU");
@@ -67,13 +59,15 @@ public class Appli {
      */
     public static void admin(DataBase db){
     
+        BoardBuilderFromFile builderFile = new BoardBuilderFromFile();
+        
         boolean loop = true;
         
         while(loop){
             System.out.println("0 - Quitter");
             System.out.println("1 - Init base de données");
             System.out.println("2 - Montrer base de données");
-            System.out.println("3 - Créer une nouvelles MAP");
+            System.out.println("3 - Importer une nouvelles MAP");
             System.out.println("4 - Efface une MAP");
 
             Scanner scanner = new Scanner(System.in);
@@ -89,12 +83,15 @@ public class Appli {
                     db.show();
                     break;
                 case "3":
-                    System.out.println("Indiquez le nom de la futur map :");
+                    System.out.println("Indiquez le nom du fichier :");
+                    /*
                     db.addMap(scanner.nextLine(), new String[]{"########",
                                                                 "#......#",
                                                                 "#X..B.P#",
                                                                 "########"}); //connecter lentrée a la sorti lecture fichier
-                    break;
+                    */
+                    builderFile.reader(scanner.nextLine(), db);
+                break;
                 case "4":
                     db.deleteMap(); 
                     break;

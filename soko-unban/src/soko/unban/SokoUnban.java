@@ -1,6 +1,5 @@
 package soko.unban;
 
-import java.sql.*;
 /**
  *
  * @author Victor Josso

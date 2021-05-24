@@ -14,7 +14,7 @@ public class Game {
     /**
      * Premier niveau du jeu soko-unban
      */
-    public static void levelOne(){
+    public static void level(){
         
         Movements movements = new Movements();
         

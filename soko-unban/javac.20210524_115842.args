@@ -1,0 +1,18 @@
+-d
+"C:\\Users\\Victor Josso\\Documents\\GitHub\\soko-unban_project\\soko-unban_project\\soko-unban\\build\\classes"
+-classpath
+"C:\\Users\\Victor Josso\\Documents\\GitHub\\soko-unban_project\\soko-unban_project\\soko-unban\\build\\classes;C:\\Users\\Victor Josso\\Documents\\GitHub\\soko-unban_project\\soko-unban_project\\soko-unban\\sqlite-jdbc-3.34.0.jar"
+-sourcepath
+"C:\\Users\\Victor Josso\\Documents\\GitHub\\soko-unban_project\\soko-unban_project\\soko-unban\\src"
+-target
+11
+-encoding
+UTF-8
+-g
+-processorpath
+"C:\\Users\\Victor Josso\\Documents\\GitHub\\soko-unban_project\\soko-unban_project\\soko-unban\\sqlite-jdbc-3.34.0.jar;C:\\Users\\Victor Josso\\Documents\\GitHub\\soko-unban_project\\soko-unban_project\\soko-unban\\build\\empty"
+-s
+"C:\\Users\\Victor Josso\\Documents\\GitHub\\soko-unban_project\\soko-unban_project\\soko-unban\\build\\generated-sources\\ap-source-output"
+-source
+11
+"C:\\Users\\Victor Josso\\Documents\\GitHub\\soko-unban_project\\soko-unban_project\\soko-unban\\src\\soko\\unban\\Admin.java"

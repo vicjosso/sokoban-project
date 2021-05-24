@@ -7,5 +7,6 @@ package soko.unban;
 public interface BoardBuilder {
     
     
-    public void reader();
+    public void reader(String name, DataBase db);
+    public void writer(DataBase db, String[] map);
 }

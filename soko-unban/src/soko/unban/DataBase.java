@@ -57,7 +57,7 @@ public class DataBase {
      * Renvoie un ID disponible pour la map
      * @return un ID disponible
      */
-    public int getAvailableMap_ID(){ //fonctionnel tant que la map avec l'ID 1 n'est pas effacé
+    public int getAvailableMap_ID(){ 
         int n = 1;
         try{
             String sql = "select map_ID from MAPS order by map_ID asc;";
