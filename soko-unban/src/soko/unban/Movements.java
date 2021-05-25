@@ -1,7 +1,7 @@
 package soko.unban;
 
 /**
- *
+ * Classe permettant de gérer les déplacements du joueur et des caisse sur le plateau
  * @author vjosso
  */
 public class Movements {
@@ -25,7 +25,6 @@ public class Movements {
         
         if(!playerFound){System.out.println("Aucun joueur sur le plateau"); return false;}
         
-        //test nécessaire pour bon fonctionnement
         switch (dir){
             case "U":
                 if(player.getRow()-1 > 0){

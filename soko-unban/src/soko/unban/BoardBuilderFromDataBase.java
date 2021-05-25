@@ -4,7 +4,7 @@ import java.sql.*;
 import java.util.*;
 
 /**
- *
+ * Classe qui permet de charger un fichier provenant de la base de données
  * @author Victor Josso
  */
 public class BoardBuilderFromDataBase {
@@ -15,34 +15,35 @@ public class BoardBuilderFromDataBase {
      * @param db, base de données
      * @return 
      */
-    public Board reader(String name, DataBase db){
-        ArrayList<String> map = new ArrayList<String>();
-        Board board = null;
+    public String[] reader(String name, DataBase db){
         
+        ArrayList<String> map = new ArrayList<String>();
         
         try{
-            String sql = "select content from ROWS where map_ID="+ name +";"; //modifier pour faire en sorte que on demande le nom de la map a partir de MAP et non l'ID
+            String sql = "select content from ROWS where map_ID="+ name +";"; 
             Connection connection = db.getConnection();
             PreparedStatement stm = connection.prepareStatement(sql);
             ResultSet result = stm.executeQuery();
             while(result.next()){
                 map.add(result.getString("content"));
             }
-            board = writer(db, Arrays.copyOf(map.toArray(),  map.size(), String[].class));
+            return Arrays.copyOf(map.toArray(),  map.size(), String[].class);
         } catch (SQLException e){
             System.out.println(e);
         }
         
-        return board;
+        return new String[] {"erreur"};
     }
     
     /**
      * Créateur du plateau de jeu
-     * @param db, base de données
-     * @param map, map a importer
-     * @return 
+     * @param db, la base de données
+     * @param name, nom de la map voulu
+     * @return le plateau de jeu
      */
-    public Board writer(DataBase db, String[] map){
+    public Board writer(DataBase db, String name){
+        
+        String[] map = this.reader(name, db);
         Board board = new Board(map.length, map[0].length());
         
         for(int i = 1 ; i < board.getNbRows()+1 ; i++){

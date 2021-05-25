@@ -4,7 +4,7 @@ import java.sql.*;
 import java.util.Scanner;
 
 /**
- *
+ * Classe s'occupant de la gestion de la base de données
  * @author Victor Josso
  */
 public class DataBase {
@@ -70,7 +70,7 @@ public class DataBase {
             }
             return n;
         } catch (SQLException e) {
-            System.out.println(e);
+            System.err.println(e);
         }
         return 101; //en case d'erreur
     }
@@ -99,7 +99,7 @@ public class DataBase {
                 statement.executeUpdate();
             }
         } catch(SQLException e){
-            System.out.println("e");
+            System.err.println(e);
         }
             
     }
@@ -129,7 +129,7 @@ public class DataBase {
             }
             System.out.println("");
         } catch (SQLException e){
-            System.out.println(e);
+            System.err.println(e);
         }
           
     }
@@ -148,7 +148,7 @@ public class DataBase {
                 System.out.println("-> " + name + " - " + map_ID);
             }
         } catch(SQLException e){
-            System.out.println(e);
+            System.err.println(e);
         }
     }
     
@@ -173,7 +173,7 @@ public class DataBase {
             PreparedStatement stm = this.connection.prepareStatement(sql);
             stm.executeUpdate();
         } catch (SQLException e) {
-            System.out.println(e);
+            System.err.println(e);
         }
     }
     

@@ -3,7 +3,7 @@ package soko.unban;
 import java.sql.SQLException;
 
 /**
- *
+ * Classe de lancement en mode joueur
  * @author Victor Josso
  */
 public class SokoUnban {

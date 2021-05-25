@@ -1,7 +1,7 @@
 package soko.unban;
 
 /**
- *
+ * Classe permettant de vérifier la victoire du joueur
  * @author vjosso
  */
 public class VictoryCheck {
@@ -17,7 +17,9 @@ public class VictoryCheck {
             if (board.getCase(o.getRow(), o.getCol()) == Content.TARGET 
                     || board.getCase(o.getRow(), o.getCol()) == Content.PLAYER 
                     || board.getCase(o.getRow(), o.getCol()) == Content.EMPTY) {
-                if(board.getCase(o.getRow(), o.getCol()) == Content.EMPTY){ board.setCase(o.getRow(), o.getCol(), Content.TARGET);}
+                if(board.getCase(o.getRow(), o.getCol()) == Content.EMPTY){ 
+                    board.setCase(o.getRow(), o.getCol(), Content.TARGET);
+                }
                 return false;
             }
         }

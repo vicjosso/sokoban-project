@@ -3,7 +3,7 @@ package soko.unban;
 import java.util.Scanner;
 
 /**
- *
+ * Classe gérant le lancement du jeu
  * @author Victor Josso
  */
 public class Game {
@@ -12,7 +12,7 @@ public class Game {
     static BoardBuilderFromDataBase builder = new BoardBuilderFromDataBase();   
     
     /**
-     * Premier niveau du jeu soko-unban
+     * Lanceur de partie du jeu soko-unban
      */
     public static void level(DataBase db){
         
@@ -23,13 +23,16 @@ public class Game {
         System.out.println("Indiquez l'ID du niveau :");
         
         Board board = null;
-        board = builder.reader(in.next(), db);
+        board = builder.writer(db, in.next());
 
         board.displayBoard();
         while(!win){
             
             System.out.println("Veuillez annoncez votre déplacement :");
             String move = in.next();
+            
+            if(move.equals("/quit")){ break;}
+            
             String[] moves = move.split("|");
             
             for(int i = 0; i< moves.length; i++){
@@ -42,7 +45,7 @@ public class Game {
             
             board.displayBoard();
         }
-        System.out.println("Félicitations! Vous avez gagné!");
+        if(win){System.out.println("Félicitations! Vous avez gagné!");}
         System.out.println("");
         
     }

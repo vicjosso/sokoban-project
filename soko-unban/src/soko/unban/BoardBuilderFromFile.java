@@ -1,10 +1,10 @@
 package soko.unban;
 
 import java.io.*;
-import java.util.Scanner;
+import java.util.*;
 
 /**
- *
+ * Classe permettant d'importer un nouvelle map dans la base de données à partir d'un fichier
  * @author Victor Josso
  */
 public class BoardBuilderFromFile {
@@ -17,14 +17,14 @@ public class BoardBuilderFromFile {
      * @param db, la base donnée
      */
     public void reader(String fileName, DataBase db){ 
-        int i = 0;
-        String[] map = new String[100]; 
+        
+        ArrayList<String> map = new ArrayList<String>();
+        
         try (Scanner scanner = new Scanner(new File(FILE_PATH + fileName +".txt"))) {
             while (scanner.hasNextLine()) {
-                map[i] = scanner.nextLine();
-                i++;
+                map.add(scanner.nextLine());
             }
-            writer(db, map);
+            writer(db, Arrays.copyOf(map.toArray(),  map.size(), String[].class));
         } catch (FileNotFoundException e) {
             System.err.println("Fichier non trouvé : " + e);
         } 

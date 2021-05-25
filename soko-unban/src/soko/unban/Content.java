@@ -1,7 +1,7 @@
 package soko.unban;
 
 /**
- *
+ * Enumération regroupant les différents états pouvant être pris par une Case
  * @author Victor Josso
  */
 public enum Content {

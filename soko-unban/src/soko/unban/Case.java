@@ -1,7 +1,7 @@
 package soko.unban;
 
 /**
- *
+ * Classe regroupant toutes les méthodes liés à une Case
  * @author Victor Josso
  */
 public class Case {

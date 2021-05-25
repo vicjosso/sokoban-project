@@ -3,7 +3,7 @@ package soko.unban;
 import java.util.Scanner;
 
 /**
- *
+ * Classe de lancement des divers menu 
  * @author Victor Josso
  */
 public class Appli {
@@ -51,6 +51,8 @@ public class Appli {
         System.out.println("    -vous devez vous déplacer à l'aide des touches, U, D, L et R");
         System.out.println("    -vous devez ensuite attendre la case B et la déplacer jusqu'à la case X, ce qui provoquera la victoire");
         System.out.println("");
+        System.out.println("Divers :");
+        System.out.println("    -vous pouvez effectuer la commande '/quit' lorsqu'une partie à commencé pour la stopper");
     }
     
     /**
@@ -84,13 +86,7 @@ public class Appli {
                     break;
                 case "3":
                     System.out.println("Indiquez le nom du fichier :");
-                    /*
-                    db.addMap(scanner.nextLine(), new String[]{"########",
-                                                                "#......#",
-                                                                "#X..B.P#",
-                                                                "########"}); //connecter lentrée a la sorti lecture fichier
-                    */
-                    builderFile.reader(scanner.nextLine(), db); //non fonctionnel
+                    builderFile.reader(scanner.nextLine(), db); 
                 break;
                 case "4":
                     db.deleteMap(); 
