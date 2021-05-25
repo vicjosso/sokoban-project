@@ -139,12 +139,13 @@ public class DataBase {
      */
     public void showNames(){
         try{
-            String sql = "select name from MAPS;";
+            String sql = "select name, map_ID from MAPS;";
             PreparedStatement stm = connection.prepareStatement(sql);
             ResultSet result = stm.executeQuery();
             while(result.next()){
                 String name = result.getString("name");
-                System.out.println("-> " + name);
+                int map_ID = result.getInt("map_ID");
+                System.out.println("-> " + name + " - " + map_ID);
             }
         } catch(SQLException e){
             System.out.println(e);

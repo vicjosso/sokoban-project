@@ -1,6 +1,7 @@
 package soko.unban;
 
 import java.sql.*;
+import java.util.*;
 
 /**
  *
@@ -8,14 +9,16 @@ import java.sql.*;
  */
 public class BoardBuilderFromDataBase {
     
-    //voir infos dans découpage entrée player
-    
-    
+    /**
+     * Lecteur de la base de données
+     * @param name, nom la map
+     * @param db, base de données
+     * @return 
+     */
     public Board reader(String name, DataBase db){
-        String[] map = new String[100];
+        ArrayList<String> map = new ArrayList<String>();
         Board board = null;
         
-        int i = 0;
         
         try{
             String sql = "select content from ROWS where map_ID="+ name +";"; //modifier pour faire en sorte que on demande le nom de la map a partir de MAP et non l'ID
@@ -23,10 +26,9 @@ public class BoardBuilderFromDataBase {
             PreparedStatement stm = connection.prepareStatement(sql);
             ResultSet result = stm.executeQuery();
             while(result.next()){
-                map[i] = result.getString("content");
-                i++;
+                map.add(result.getString("content"));
             }
-            board = writer(db, map);
+            board = writer(db, Arrays.copyOf(map.toArray(),  map.size(), String[].class));
         } catch (SQLException e){
             System.out.println(e);
         }
@@ -34,28 +36,33 @@ public class BoardBuilderFromDataBase {
         return board;
     }
     
-    
+    /**
+     * Créateur du plateau de jeu
+     * @param db, base de données
+     * @param map, map a importer
+     * @return 
+     */
     public Board writer(DataBase db, String[] map){
-        Board board = new Board(map[1].length(), map.length);
+        Board board = new Board(map.length, map[0].length());
         
-        for(int i = 1 ; i < board.getNbRows() ; i++){
-            String[] contents = map[i-1].split("|"); //map est nul a un moment ce qui empeche le split, pb venant sans doute de la requete sql
+        for(int i = 1 ; i < board.getNbRows()+1 ; i++){
+            String[] contents = map[i-1].split("|"); 
             for(int j = 1 ; j < contents.length+1; j++){
                 switch(contents[j-1]){
                     case "#":
                         board.setCase(i, j, Content.WALL);
                         break;
                     case "P":
-                        board.addPlayer(j, j);
+                        board.addPlayer(i, j);
                         break;
                     case "B":
-                        board.addBox(j, j);
+                        board.addBox(i, j);
                         break;
                     case "X":
-                        board.addTarget(j, j);
+                        board.addTarget(i, j);
                         break;
                     default:
-                        board.setCase(j, j, Content.EMPTY);
+                        board.setCase(i, j, Content.EMPTY);
                         break;
                 }
             }

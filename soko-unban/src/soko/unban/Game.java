@@ -1,6 +1,5 @@
 package soko.unban;
 
-import java.sql.SQLException;
 import java.util.Scanner;
 
 /**
@@ -21,20 +20,7 @@ public class Game {
         
         boolean win = false;
         
-        /*
-        //initialisation board
-        Board board = new Board(10, 10);
-        Case start = new Case(2, 5);
-        
-        board.drawVerticalWall(start, 10);
-        board.drawHorizontalWall(start, 4);
-        board.addPlayer(10, 10);
-        board.addBox(9, 9);
-        board.addTarget(8, 8);
-        //
-        */
-        
-        System.out.println("Indiquez le nom du niveau :");
+        System.out.println("Indiquez l'ID du niveau :");
         
         Board board = null;
         board = builder.reader(in.next(), db);
@@ -57,6 +43,7 @@ public class Game {
             board.displayBoard();
         }
         System.out.println("Félicitations! Vous avez gagné!");
+        System.out.println("");
         
     }
     
