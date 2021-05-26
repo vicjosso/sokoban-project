@@ -160,6 +160,7 @@ public class DataBase {
      * Permet d'effacer un plateau de jeu spécifique en fonction de son ID
      */
     public void deleteMap(){
+        show();
         System.out.println("Indiquez l'ID de la map à effacer :");
         Scanner scanner = new Scanner(System.in);
         String ID = scanner.nextLine();

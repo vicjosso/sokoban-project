@@ -70,4 +70,5 @@ public class ClassTests {
         board.addPlayer(1, 1);
         assertEquals(false, move.movementValidation("U", board));
     } 
+    
 }
