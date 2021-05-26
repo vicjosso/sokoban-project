@@ -57,7 +57,7 @@ public class DataBase {
      * Renvoie un ID disponible pour la map
      * @return un ID disponible
      */
-    public int getAvailableMap_ID(){ 
+    private int getAvailableMap_ID(){ 
         int n = 1;
         try{
             String sql = "select map_ID from MAPS order by map_ID asc;";
@@ -109,6 +109,8 @@ public class DataBase {
      */
     public void show(){
         try{
+            System.out.println("");
+            System.out.println("MAPS");
             String sql = "select * from MAPS;";
             PreparedStatement stm = connection.prepareStatement(sql);
             ResultSet result = stm.executeQuery();
@@ -118,6 +120,8 @@ public class DataBase {
                 System.out.println(map_ID + " - " + name);
             }
             
+            System.out.println("");
+            System.out.println("ROWS");
             sql = "select * from ROWS;";
             stm = connection.prepareStatement(sql);
             result = stm.executeQuery();
@@ -168,7 +172,7 @@ public class DataBase {
      * Exécute l'update query
      * @param sql, trame sql voulu
      */
-    public void updateQuery(String sql){
+    private void updateQuery(String sql){
         try{
             PreparedStatement stm = this.connection.prepareStatement(sql);
             stm.executeUpdate();

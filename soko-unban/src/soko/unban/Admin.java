@@ -3,7 +3,7 @@ package soko.unban;
 import java.sql.*;
 
 /**
- * Classe de lancment du programme en mode admin
+ * Classe de lancement du programme en mode admin
  * @author Victor Josso
  */
 public class Admin {

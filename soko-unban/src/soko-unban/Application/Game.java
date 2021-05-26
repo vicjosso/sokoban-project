@@ -13,6 +13,7 @@ public class Game {
     
     /**
      * Lanceur de partie du jeu soko-unban
+     * @param db, la base de données
      */
     public static void level(DataBase db){
         

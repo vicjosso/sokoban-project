@@ -15,7 +15,7 @@ public class BoardBuilderFromDataBase {
      * @param db, base de données
      * @return 
      */
-    public String[] reader(String name, DataBase db){
+    private String[] reader(String name, DataBase db){
         
         ArrayList<String> map = new ArrayList<String>();
         
@@ -27,9 +27,9 @@ public class BoardBuilderFromDataBase {
             while(result.next()){
                 map.add(result.getString("content"));
             }
-            return Arrays.copyOf(map.toArray(),  map.size(), String[].class);
+            if(result.getString("content") != null){return Arrays.copyOf(map.toArray(),  map.size(), String[].class);}
         } catch (SQLException e){
-            System.out.println(e);
+            System.err.println(e);
         }
         
         return new String[] {"erreur"};
