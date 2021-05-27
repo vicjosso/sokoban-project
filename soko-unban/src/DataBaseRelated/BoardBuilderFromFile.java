@@ -1,4 +1,4 @@
-package soko.unban;
+package DataBaseRelated;
 
 import java.io.*;
 import java.util.*;
@@ -35,7 +35,7 @@ public class BoardBuilderFromFile {
      * @param db, la base de donnée
      * @param map, map à importer
      */
-    public void writer(DataBase db, String[] map){
+    private void writer(DataBase db, String[] map){
         Scanner in = new Scanner(System.in);
         
         System.out.println("Entrez le nom de la futur map :");

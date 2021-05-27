@@ -1,4 +1,4 @@
-package soko.unban;
+package BoardClasses;
 
 /**
  * Classe regroupant toutes les méthodes liés à une Case

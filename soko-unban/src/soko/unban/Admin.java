@@ -1,5 +1,6 @@
 package soko.unban;
 
+import DataBaseRelated.DataBase;
 import java.sql.*;
 
 /**

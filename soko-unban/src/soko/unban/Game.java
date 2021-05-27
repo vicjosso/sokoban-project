@@ -1,5 +1,10 @@
 package soko.unban;
 
+import Checks.VictoryCheck;
+import Checks.Movements;
+import BoardClasses.Board;
+import DataBaseRelated.BoardBuilderFromDataBase;
+import DataBaseRelated.DataBase;
 import java.util.Scanner;
 
 /**

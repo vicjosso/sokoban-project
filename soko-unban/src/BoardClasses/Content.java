@@ -1,4 +1,4 @@
-package soko.unban;
+package BoardClasses;
 
 /**
  * Enumération regroupant les différents états pouvant être pris par une Case

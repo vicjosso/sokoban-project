@@ -1,5 +1,7 @@
 package soko.unban;
 
+import DataBaseRelated.BoardBuilderFromFile;
+import DataBaseRelated.DataBase;
 import java.util.Scanner;
 
 /**
@@ -33,6 +35,7 @@ public class Appli {
                     break;
                 case "2":
                     Appli.rules();
+                    break;
                 case "69":
                     System.out.println("UWU ceci est une fonctionnalité secrète UWU");
                     break;
@@ -53,6 +56,7 @@ public class Appli {
         System.out.println("");
         System.out.println("Divers :");
         System.out.println("    -vous pouvez effectuer la commande '/quit' lorsqu'une partie à commencé pour la stopper");
+        System.out.println("");
     }
     
     /**

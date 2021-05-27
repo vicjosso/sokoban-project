@@ -1,4 +1,8 @@
-package soko.unban;
+package Checks;
+
+import BoardClasses.Content;
+import BoardClasses.Board;
+import BoardClasses.Case;
 
 /**
  * Classe permettant de gérer les déplacements du joueur et des caisse sur le plateau
@@ -140,7 +144,7 @@ public class Movements {
      * @param offset, nombre de boîte par rapport au joueur
      * @return true si le déplacement est possible sinon false
      */
-    public boolean boxValidation(Board board, Case player, String dir, int offset){
+    private boolean boxValidation(Board board, Case player, String dir, int offset){
         
         switch (dir){
             case "U":

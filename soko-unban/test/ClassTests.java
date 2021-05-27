@@ -1,9 +1,10 @@
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
-import soko.unban.Board;
-import soko.unban.Case;
-import soko.unban.Movements;
-import soko.unban.VictoryCheck;
+import BoardClasses.Board;
+import BoardClasses.Case;
+import BoardClasses.Content;
+import Checks.Movements;
+import Checks.VictoryCheck;
 
 /**
  *
@@ -55,8 +56,11 @@ public class ClassTests {
         board.displayBoard();
         
         Movements move = new Movements();
+        assertEquals(true, move.movementValidation("U", board));
         
-        assertEquals(true, move.boxValidation(board, new Case(5, 1), "U", 1));
-        assertEquals(false, move.boxValidation(board, new Case(2, 3), "L", 1)); 
+        board.setCase(5, 5, Content.EMPTY);
+        board.addPlayer(1, 1);
+        assertEquals(false, move.movementValidation("U", board));
+
     }
 }

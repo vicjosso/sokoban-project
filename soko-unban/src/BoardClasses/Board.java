@@ -1,4 +1,4 @@
-package soko.unban;
+package BoardClasses;
 
 import java.util.ArrayList;
 

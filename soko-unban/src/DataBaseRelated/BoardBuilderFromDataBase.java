@@ -1,7 +1,9 @@
-package soko.unban;
+package DataBaseRelated;
 
 import java.sql.*;
 import java.util.*;
+import BoardClasses.Board;
+import BoardClasses.Content;
 
 /**
  * Classe qui permet de charger un fichier provenant de la base de données
@@ -15,24 +17,26 @@ public class BoardBuilderFromDataBase {
      * @param db, base de données
      * @return 
      */
-    public String[] reader(String name, DataBase db){
+    private String[] reader(String name, DataBase db){
         
         ArrayList<String> map = new ArrayList<String>();
         
-        try{
-            String sql = "select content from ROWS where map_ID="+ name +";"; 
-            Connection connection = db.getConnection();
-            PreparedStatement stm = connection.prepareStatement(sql);
-            ResultSet result = stm.executeQuery();
-            while(result.next()){
-                map.add(result.getString("content"));
+        while(true){
+            try{
+                String sql = "select content from ROWS where map_ID="+ name +";"; 
+                Connection connection = db.getConnection();
+                PreparedStatement stm = connection.prepareStatement(sql);
+                ResultSet result = stm.executeQuery();
+                while(result.next()){
+                    map.add(result.getString("content"));
+                }
+                if(map.isEmpty() == false)return Arrays.copyOf(map.toArray(),  map.size(), String[].class);
+            } catch (SQLException e){
+                System.out.println(e);
             }
-            return Arrays.copyOf(map.toArray(),  map.size(), String[].class);
-        } catch (SQLException e){
-            System.out.println(e);
+            System.out.println("ID invalide, veuillez en insérer un valide :");
+            name = new Scanner(System.in).next();
         }
-        
-        return new String[] {"erreur"};
     }
     
     /**
@@ -61,6 +65,10 @@ public class BoardBuilderFromDataBase {
                         break;
                     case "X":
                         board.addTarget(i, j);
+                        break;
+                    case "Y":
+                        board.addTarget(i, j);
+                        board.addBox(i, j);
                         break;
                     default:
                         board.setCase(i, j, Content.EMPTY);

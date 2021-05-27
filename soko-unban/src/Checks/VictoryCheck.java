@@ -1,4 +1,8 @@
-package soko.unban;
+package Checks;
+
+import BoardClasses.Content;
+import BoardClasses.Board;
+import BoardClasses.Case;
 
 /**
  * Classe permettant de vérifier la victoire du joueur

@@ -1,4 +1,4 @@
-package soko.unban;
+package DataBaseRelated;
 
 import java.sql.*;
 import java.util.Scanner;
@@ -109,6 +109,8 @@ public class DataBase {
      */
     public void show(){
         try{
+            System.out.println("");
+            System.out.println("MAPS");
             String sql = "select * from MAPS;";
             PreparedStatement stm = connection.prepareStatement(sql);
             ResultSet result = stm.executeQuery();
@@ -118,6 +120,8 @@ public class DataBase {
                 System.out.println(map_ID + " - " + name);
             }
             
+            System.out.println("");
+            System.out.println("ROWS");
             sql = "select * from ROWS;";
             stm = connection.prepareStatement(sql);
             result = stm.executeQuery();
@@ -156,11 +160,14 @@ public class DataBase {
      * Permet d'effacer un plateau de jeu spécifique en fonction de son ID
      */
     public void deleteMap(){
+        System.out.println("");
+        show();
         System.out.println("Indiquez l'ID de la map à effacer :");
         Scanner scanner = new Scanner(System.in);
         String ID = scanner.nextLine();
         updateQuery("delete from MAPS where map_ID = "+ ID +";");
         updateQuery("delete from ROWS where map_ID = "+ ID +";");
+        System.out.println("La map correspondante a été supprimé");
         System.out.println("");
     }
     
@@ -168,7 +175,7 @@ public class DataBase {
      * Exécute l'update query
      * @param sql, trame sql voulu
      */
-    public void updateQuery(String sql){
+    private void updateQuery(String sql){
         try{
             PreparedStatement stm = this.connection.prepareStatement(sql);
             stm.executeUpdate();
