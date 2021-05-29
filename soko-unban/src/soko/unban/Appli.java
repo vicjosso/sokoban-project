@@ -37,7 +37,7 @@ public class Appli {
                     Appli.rules();
                     break;
                 case "69":
-                    System.out.println("UWU ceci est une fonctionnalité secrète UWU");
+                    System.out.println("Nice");
                     break;
                 default:
                     System.out.println("-> commande inconnue '" + commande + "'");
