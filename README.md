@@ -6,7 +6,7 @@ The project was done during my studies at the university (for my first year).
 
 #### Description
 
-The objectif of this project was to create a game similar to the original sokoban game using a importation system of playable map, the game is played by using the java terminal after launching the app.
+The objective of this project was to create a game similar to the original sokoban game using a importation system of playable map, the game is played by using the java terminal after launching the app.
 
 ## Français
 
